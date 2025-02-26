@@ -1,2 +1,2 @@
-# the_magicians_pet
+# The Magician's Pet
 Minigame project for UEM.
