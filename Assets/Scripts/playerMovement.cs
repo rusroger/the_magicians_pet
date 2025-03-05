@@ -8,6 +8,8 @@ public class playerMovement : MonoBehaviour
     private float Move;
 
     public float speed;
+    public float runSpeed;
+
     public float jump;
 
     bool onGround;
@@ -28,7 +30,9 @@ public class playerMovement : MonoBehaviour
     {
         Move = Input.GetAxisRaw("Horizontal");
 
-        rb.linearVelocity = new Vector2(Move * speed, rb.linearVelocity.y);
+        float currentSpeed = Input.GetButton("Run") ? runSpeed : speed;
+
+        rb.linearVelocity = new Vector2(Move * currentSpeed, rb.linearVelocity.y);
 
         if (Input.GetButtonDown("Jump") && onGround)
         {
