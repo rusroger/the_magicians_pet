@@ -35,18 +35,22 @@ public class playerMovement : MonoBehaviour
             rb.AddForce(new Vector2(rb.linearVelocity.x, jump * 10));
         }
 
-        if(Move != 0)
+        if((Move != 0) && onGround)
         {
             anim.SetBool("isWalking", true);
         }
-        else
+        else if ((Move == 0) && onGround)
         {
             anim.SetBool("isWalking", false);
         }
+        else if ((Move != 0) && !onGround)
+        {
+            anim.SetBool("isJumping", true);
+        }
 
-        //anim.SetBool("isJumping", );
+            //anim.SetBool("isJumping", );
 
-        if(!isFacingRight && Move > 0)
+        if (!isFacingRight && Move > 0)
         {
             Flip();
         }
@@ -72,6 +76,7 @@ public class playerMovement : MonoBehaviour
             //if(normal == Vector3.up)
             {
                 onGround = true;
+                anim.SetBool("isJumping", false);
             }
         }
     }
@@ -81,6 +86,7 @@ public class playerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             onGround = false;
+            anim.SetBool("isJumping", true);
         }
     }
 }
