@@ -6,10 +6,8 @@ public class playerMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     private float Move;
-
     public float speed;
     public float runSpeed;
-
     public float jump;
 
     bool onGround;
@@ -28,17 +26,20 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Movimiento y correr
         Move = Input.GetAxisRaw("Horizontal");
 
         float currentSpeed = Input.GetButton("Run") ? runSpeed : speed;
 
         rb.linearVelocity = new Vector2(Move * currentSpeed, rb.linearVelocity.y);
 
+        //Salto
         if (Input.GetButtonDown("Jump") && onGround)
         {
             rb.AddForce(new Vector2(rb.linearVelocity.x, jump * 10));
         }
 
+        // Animaciones
         if((Move != 0) && onGround)
         {
             anim.SetBool("isWalking", true);
@@ -52,8 +53,7 @@ public class playerMovement : MonoBehaviour
             anim.SetBool("isJumping", true);
         }
 
-            //anim.SetBool("isJumping", );
-
+        //Flip animaciones
         if (!isFacingRight && Move > 0)
         {
             Flip();
@@ -76,8 +76,6 @@ public class playerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            //Vector3 normal = other.GetContact(0).normal;
-            //if(normal == Vector3.up)
             {
                 onGround = true;
                 anim.SetBool("isJumping", false);

@@ -42,5 +42,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: 1. background
+    uniqueID: 1420100071
+    locked: 0
+  - name: 2. arboles traseros
+    uniqueID: 78927555
+    locked: 0
+  - name: 3. arboles delanteros
+    uniqueID: 960189155
+    locked: 0
+  - name: player enemigos y mapa
+    uniqueID: 4212012757
+    locked: 0
+  - name: 
+    uniqueID: 2043250575
+    locked: 0
   m_RenderingLayers:
   - Default
